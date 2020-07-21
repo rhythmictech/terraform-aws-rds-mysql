@@ -1,28 +1,34 @@
-output "password-arn" {
-  value = aws_secretsmanager_secret.password.arn
+output "address" {
+  description = "RDS database address"
+  value       = aws_db_instance.this.address
 }
 
-output "password-version" {
-  value = aws_secretsmanager_secret_version.password_val.version_id
-}
-
-output "instance" {
+output "instance_connection_info" {
+  description = "Object containing connection info"
   value = {
-    id       = aws_db_instance.this.id
-    username = aws_db_instance.this.username
     address  = aws_db_instance.this.address
+    endpoint = aws_db_instance.this.endpoint
+    id       = aws_db_instance.this.id
+    port     = aws_db_instance.this.port
+    username = aws_db_instance.this.username
   }
 }
 
-output "instance-id" {
-  value = aws_db_instance.this.id
+output "instance_id" {
+  description = "Instance ID of RDS DB"
+  value       = aws_db_instance.this.id
+}
+output "password_secret_arn" {
+  description = "Password secret ARN"
+  value       = local.create_password_secret ? module.password.secret_arn : null
+}
+
+output "password_secret_version_id" {
+  description = "Password secret version"
+  value       = local.create_password_secret ? module.password.version_id : null
 }
 
 output "username" {
-  value = aws_db_instance.this.username
+  description = "Master username"
+  value       = aws_db_instance.this.username
 }
-
-output "address" {
-  value = aws_db_instance.this.address
-}
-
