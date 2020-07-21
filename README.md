@@ -6,7 +6,7 @@
 [![pre-commit-check](https://github.com/rhythmictech/terraform-aws-rds-mysql/workflows/pre-commit-check/badge.svg?branch=master&event=push)](https://github.com/rhythmictech/terraform-aws-rds-mysql/actions?query=workflow%3Apre-commit-check+event%3Apush+branch%3Amaster)
 <a href="https://twitter.com/intent/follow?screen_name=RhythmicTech"><img src="https://img.shields.io/twitter/follow/RhythmicTech?style=social&logo=twitter" alt="follow on Twitter"></a>
 
-Create and manage an RDS MySQL instance. Includes the ability to manage the master password in Secrets Manager and manage the security group that controls access.
+Create and manage an RDS MySQL instance. Includes the ability to manage the master password in Secrets Manager and manage the security group that controls RDS access.
 
 ## Usage
 ```
