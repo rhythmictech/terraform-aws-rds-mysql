@@ -80,7 +80,7 @@ resource "aws_db_instance" "this" {
 }
 
 resource "aws_security_group" "this" {
-  name = local.sg_name
+  name_prefix = local.sg_name
 
   description = "RDS instance SG"
   tags        = local.sg_tags
