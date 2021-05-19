@@ -95,54 +95,54 @@ variable "parameters" {
   default = [
     {
       apply_method = "immediate"
-      name  = "character_set_database"
-      value = "utf8"
+      name         = "character_set_database"
+      value        = "utf8"
     },
     {
       apply_method = "immediate"
-      name  = "character_set_connection"
-      value = "utf8"
+      name         = "character_set_connection"
+      value        = "utf8"
     },
     {
       apply_method = "immediate"
-      name  = "character_set_filesystem"
-      value = "utf8"
+      name         = "character_set_filesystem"
+      value        = "utf8"
     },
     {
       apply_method = "immediate"
-      name  = "character_set_results"
-      value = "utf8"
+      name         = "character_set_results"
+      value        = "utf8"
     },
     {
       apply_method = "immediate"
-      name  = "character_set_server"
-      value = "utf8"
+      name         = "character_set_server"
+      value        = "utf8"
     },
     {
       apply_method = "immediate"
-      name  = "character_set_client"
-      value = "utf8"
+      name         = "character_set_client"
+      value        = "utf8"
     },
     {
       apply_method = "immediate"
-      name  = "collation_connection"
-      value = "utf8_bin"
+      name         = "collation_connection"
+      value        = "utf8_bin"
     },
     {
       apply_method = "immediate"
-      name  = "collation_server"
-      value = "utf8_bin"
+      name         = "collation_server"
+      value        = "utf8_bin"
     },
     {
       apply_method = "immediate"
-      name  = "max_allowed_packet"
-      value = "1073741824"
+      name         = "max_allowed_packet"
+      value        = "1073741824"
   }]
 
   type = list(object({
     apply_method = string
-    name  = string
-    value = string
+    name         = string
+    value        = string
   }))
 }
 
