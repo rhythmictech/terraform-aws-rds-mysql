@@ -46,8 +46,6 @@ resource "aws_db_parameter_group" "this" {
 }
 
 resource "aws_db_instance" "this" {
-  name = var.name
-
   allocated_storage                   = var.storage
   backup_retention_period             = var.backup_retention_period
   copy_tags_to_snapshot               = var.copy_tags_to_snapshot
