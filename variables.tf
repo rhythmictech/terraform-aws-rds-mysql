@@ -89,6 +89,12 @@ variable "iam_database_authentication_enabled" {
   type        = bool
 }
 
+variable "param_group_family_name" {
+  default     = null
+  description = "Family name of DB parameter group. Valid family names can be queried using aws cli: aws rds describe-db-engine-versions --query 'DBEngineVersions[].DBParameterGroupFamily'"
+  type        = string
+}
+
 variable "parameters" {
   description = "Database parameters (will create parameter group if not null)"
 
