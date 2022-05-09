@@ -5,7 +5,7 @@ locals {
   parameter_group_name      = length(var.parameters) > 0 ? aws_db_parameter_group.this[0].name : null
   password                  = try(module.password.secret, var.password)
   sg_name                   = "${var.name}-db-access"
-
+  param_group_family_name   = var.param_group_family_name == null ? "${local.engine}${var.engine_version}" : var.param_group_family_name
   sg_tags = merge(
     var.tags,
     map(
@@ -31,7 +31,7 @@ resource "aws_db_parameter_group" "this" {
 
   name_prefix = "${var.name}-param"
 
-  family = "${local.engine}${var.engine_version}"
+  family = local.param_group_family_name
 
   dynamic "parameter" {
     iterator = each
