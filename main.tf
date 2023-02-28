@@ -6,12 +6,7 @@ locals {
   password                  = try(module.password.secret, var.password)
   sg_name                   = "${var.name}-db-access"
   param_group_family_name   = var.param_group_family_name == null ? "${local.engine}${var.engine_version}" : var.param_group_family_name
-  sg_tags = merge(
-    var.tags,
-    map(
-      "Name", "${var.name}-db-access"
-    )
-  )
+  sg_tags                   = merge(var.tags, { "Name" = "${var.name}-db-access" })
 }
 
 module "password" {
@@ -62,7 +57,7 @@ resource "aws_db_instance" "this" {
   multi_az                            = var.multi_az
   parameter_group_name                = local.parameter_group_name
   password                            = local.password
-  performance_insights_enabled        = var.performance_insights_enabled
+  performance_insights_enabled        = var.performance_insights_enabled #tfsec:ignore:aws-rds-enable-performance-insights
   port                                = var.port
   storage_encrypted                   = var.storage_encrypted
   storage_type                        = var.storage_type
