@@ -95,6 +95,12 @@ variable "param_group_family_name" {
   type        = string
 }
 
+variable "parameter_group_name" {
+  default = null
+  description = "Name of parameter group. conflicts with parameters"
+  type = string
+}
+
 variable "parameters" {
   description = "Database parameters (will create parameter group if not null)"
 

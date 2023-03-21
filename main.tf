@@ -2,7 +2,7 @@ locals {
   create_password_secret    = var.password == null ? true : false
   engine                    = "mysql"
   final_snapshot_identifier = var.final_snapshot_identifier == null ? "${var.name}-final-snapshot" : var.final_snapshot_identifier
-  parameter_group_name      = length(var.parameters) > 0 ? aws_db_parameter_group.this[0].name : null
+  parameter_group_name      = var.parameter_group_name == null ? aws_db_parameter_group.this[0].name : var.parameter_group_name
   password                  = try(module.password.secret, var.password)
   sg_name                   = "${var.name}-db-access"
   param_group_family_name   = var.param_group_family_name == null ? "${local.engine}${var.engine_version}" : var.param_group_family_name
@@ -65,6 +65,10 @@ resource "aws_db_instance" "this" {
   skip_final_snapshot                 = var.skip_final_snapshot
   username                            = var.username
   vpc_security_group_ids              = [aws_security_group.this.id]
+
+  lifecycle {
+    ignore_changes = [engine_version, allocated_storage]
+  }
 
   tags = merge(var.tags,
     {
