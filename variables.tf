@@ -89,6 +89,12 @@ variable "iam_database_authentication_enabled" {
   type        = bool
 }
 
+variable "kms_key_id" {
+  default     = null
+  description = "If encrypting database with a KMS key, specify the id of the KMS key here. Note that storage_encrypted will also need to be set to true."
+  type        = string
+}
+
 variable "param_group_family_name" {
   default     = null
   description = "Family name of DB parameter group. Valid family names can be queried using aws cli: aws rds describe-db-engine-versions --query 'DBEngineVersions[].DBParameterGroupFamily'"
@@ -96,9 +102,9 @@ variable "param_group_family_name" {
 }
 
 variable "parameter_group_name" {
-  default = null
+  default     = null
   description = "Name of parameter group. conflicts with parameters"
-  type = string
+  type        = string
 }
 
 variable "parameters" {
