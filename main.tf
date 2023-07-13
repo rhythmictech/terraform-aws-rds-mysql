@@ -52,6 +52,7 @@ resource "aws_db_instance" "this" {
   iam_database_authentication_enabled = var.iam_database_authentication_enabled
   identifier_prefix                   = var.identifier_prefix
   instance_class                      = var.instance_class
+  kms_key_id                          = var.kms_key_id
   monitoring_interval                 = var.monitoring_interval
   monitoring_role_arn                 = var.monitoring_role_arn
   multi_az                            = var.multi_az
