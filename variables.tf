@@ -71,6 +71,12 @@ variable "enable_deletion_protection" {
   type        = bool
 }
 
+variable "engine" {
+  default     = "mysql"
+  description = "Database Engine to use for RDS (mysql or mariadb are acceptable here)"
+  type        = string
+}
+
 variable "engine_version" {
   default     = "5.7"
   description = "Version of database engine to use"

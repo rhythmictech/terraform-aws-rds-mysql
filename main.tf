@@ -1,11 +1,10 @@
 locals {
   create_password_secret    = var.password == null ? true : false
-  engine                    = "mysql"
   final_snapshot_identifier = var.final_snapshot_identifier == null ? "${var.name}-final-snapshot" : var.final_snapshot_identifier
   parameter_group_name      = var.parameter_group_name == null ? aws_db_parameter_group.this[0].name : var.parameter_group_name
   password                  = try(module.password.secret, var.password)
   sg_name                   = "${var.name}-db-access"
-  param_group_family_name   = var.param_group_family_name == null ? "${local.engine}${var.engine_version}" : var.param_group_family_name
+  param_group_family_name   = var.param_group_family_name == null ? "${var.engine}${var.engine_version}" : var.param_group_family_name
   sg_tags                   = merge(var.tags, { "Name" = "${var.name}-db-access" })
 }
 
@@ -47,7 +46,7 @@ resource "aws_db_instance" "this" {
   db_subnet_group_name                = var.subnet_group_name
   deletion_protection                 = var.enable_deletion_protection
   enabled_cloudwatch_logs_exports     = var.cloudwatch_log_exports
-  engine                              = local.engine
+  engine                              = var.engine
   engine_version                      = var.engine_version
   iam_database_authentication_enabled = var.iam_database_authentication_enabled
   identifier_prefix                   = var.identifier_prefix
