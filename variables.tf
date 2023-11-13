@@ -182,6 +182,12 @@ variable "password_length" {
   type        = number
 }
 
+variable "password_override_special_characters" {
+  default     = "#$%^*()-=_+[]{};<>?,."
+  description = "Set of special characters to allow when creating the password. The default is suitable for generating MySQL passwords for RDS. NOTE: If you created your database in a version before 2.3.0, you need to explicitly set this value to an empty string '' in order to keep your password from being regenerated."
+  type        = string
+}
+
 variable "pass_version" {
   default     = 1
   description = "Increment to force master user password change (not used if `password` is set)"
