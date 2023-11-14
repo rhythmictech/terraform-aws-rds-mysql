@@ -14,10 +14,11 @@ module "password" {
 
   name_prefix = "${var.name}-rds-master-password"
 
-  create_secret = local.create_password_secret
-  length        = var.password_length
-  pass_version  = var.pass_version
-  tags          = var.tags
+  create_secret    = local.create_password_secret
+  length           = var.password_length
+  override_special = var.password_override_special_characters
+  pass_version     = var.pass_version
+  tags             = var.tags
 }
 
 resource "aws_db_parameter_group" "this" {

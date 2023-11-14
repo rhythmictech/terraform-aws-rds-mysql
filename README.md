@@ -60,6 +60,7 @@ module "rds-mysql" {
 | <a name="input_cloudwatch_log_exports"></a> [cloudwatch\_log\_exports](#input\_cloudwatch\_log\_exports) | Log types to export to CloudWatch | `list(string)` | <pre>[<br>  "audit",<br>  "error",<br>  "general",<br>  "slowquery"<br>]</pre> | no |
 | <a name="input_copy_tags_to_snapshot"></a> [copy\_tags\_to\_snapshot](#input\_copy\_tags\_to\_snapshot) | If `true`, RDS instance tags will be copied to snapshots | `bool` | `true` | no |
 | <a name="input_enable_deletion_protection"></a> [enable\_deletion\_protection](#input\_enable\_deletion\_protection) | If `true`, deletion protection will be turned on for the RDS instance(s) | `bool` | `true` | no |
+| <a name="input_engine"></a> [engine](#input\_engine) | Database Engine to use for RDS (mysql or mariadb are acceptable here) | `string` | `"mysql"` | no |
 | <a name="input_engine_version"></a> [engine\_version](#input\_engine\_version) | Version of database engine to use | `string` | `"5.7"` | no |
 | <a name="input_final_snapshot_identifier"></a> [final\_snapshot\_identifier](#input\_final\_snapshot\_identifier) | name of final snapshot (will be computed automatically if not specified) | `string` | `null` | no |
 | <a name="input_iam_database_authentication_enabled"></a> [iam\_database\_authentication\_enabled](#input\_iam\_database\_authentication\_enabled) | Whether or not to enable IAM DB authentication | `bool` | `false` | no |
@@ -76,6 +77,7 @@ module "rds-mysql" {
 | <a name="input_pass_version"></a> [pass\_version](#input\_pass\_version) | Increment to force master user password change (not used if `password` is set) | `number` | `1` | no |
 | <a name="input_password"></a> [password](#input\_password) | Master password (if not set, one will be generated dynamically and exposed through a secret) | `string` | `null` | no |
 | <a name="input_password_length"></a> [password\_length](#input\_password\_length) | Master password length (not used if `password` is set) | `number` | `30` | no |
+| <a name="input_password_override_special_characters"></a> [password\_override\_special\_characters](#input\_password\_override\_special\_characters) | Set of special characters to allow when creating the password. The default is suitable for generating MySQL passwords for RDS. NOTE: If you created your database on a module version before 3.3.0, you need to explicitly set this value to an empty string '' in order to keep your password from being regenerated. | `string` | `"#$%^*()-=_+[]{};<>?,."` | no |
 | <a name="input_performance_insights_enabled"></a> [performance\_insights\_enabled](#input\_performance\_insights\_enabled) | If true, performance insights will be enabled | `bool` | `false` | no |
 | <a name="input_port"></a> [port](#input\_port) | Port the database should listen on | `string` | `"3306"` | no |
 | <a name="input_skip_final_snapshot"></a> [skip\_final\_snapshot](#input\_skip\_final\_snapshot) | If `true` no final snapshot will be taken on termination | `bool` | `false` | no |
