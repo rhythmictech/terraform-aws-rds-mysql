@@ -81,6 +81,7 @@ module "rds-mysql" {
 | <a name="input_performance_insights_enabled"></a> [performance\_insights\_enabled](#input\_performance\_insights\_enabled) | If true, performance insights will be enabled | `bool` | `false` | no |
 | <a name="input_port"></a> [port](#input\_port) | Port the database should listen on | `string` | `"3306"` | no |
 | <a name="input_skip_final_snapshot"></a> [skip\_final\_snapshot](#input\_skip\_final\_snapshot) | If `true` no final snapshot will be taken on termination | `bool` | `false` | no |
+| <a name="input_snapshot_identifier"></a> [snapshot\_identifier](#input\_snapshot\_identifier) | Specifies whether or not to create this database from a snapshot. This correlates to the snapshot ID you'd find in the RDS console, e.g: rds:production-2015-06-26-06-05. | `string` | `""` | no |
 | <a name="input_storage"></a> [storage](#input\_storage) | How much storage is available to the database | `string` | `20` | no |
 | <a name="input_storage_encrypted"></a> [storage\_encrypted](#input\_storage\_encrypted) | Encrypt DB storage | `bool` | `true` | no |
 | <a name="input_storage_type"></a> [storage\_type](#input\_storage\_type) | What storage backend to use (`gp2` or `standard`. io1 not supported) | `string` | `"gp2"` | no |
