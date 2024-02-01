@@ -60,6 +60,7 @@ resource "aws_db_instance" "this" {
   password                            = local.password
   performance_insights_enabled        = var.performance_insights_enabled #tfsec:ignore:aws-rds-enable-performance-insights
   port                                = var.port
+  snapshot_identifier                 = var.snapshot_identifier == "" ? null : var.snapshot_identifier
   storage_encrypted                   = var.storage_encrypted
   storage_type                        = var.storage_type
   final_snapshot_identifier           = local.final_snapshot_identifier
