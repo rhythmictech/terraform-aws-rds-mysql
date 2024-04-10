@@ -1,4 +1,4 @@
-
+#trivy:ignore:AVD-AWS-0176
 module "basic" {
   source = "../.."
 
